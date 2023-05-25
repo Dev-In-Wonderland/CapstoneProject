@@ -3,6 +3,7 @@ package com.portfoliobackend.movies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public class MovieController {
 
     @GetMapping
     public ResponseEntity<List<Movie>> getMovies() {
-        return new ResponseEntity<List<Movie>>(service.findAllMovies(), HttpStatus.OK);
+        return new ResponseEntity<List<Movie>>((MultiValueMap<String, String>) service.findAllMovies(), HttpStatus.OK);
     }
 
     @GetMapping("/{imdbId}")
